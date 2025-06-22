@@ -1,21 +1,21 @@
-# Dockerfile (Opción 1: Clonando el repo)
+# Dockerfile 
 FROM python:3.9-slim-buster
 
 
-# Establece el directorio de trabajo dentro del contenedor
+# Establece el directorio de trabajo del contenedor
+#WORKDIR /app
 WORKDIR /app/dockerizando
 
-#WORKDIR /app
 
-
-# Instala Git dentro del contenedor para poder clonar el repositorio
+# Clona el repositorio
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-# ¡IMPORTANTE!: Reemplaza la URL con la de TU REPOSITORIO DE GITHUB
+# URL  de TU REPOSITORIO DE GITHUB
 RUN git clone https://github.com/a365207/dockerizando .
 
-# CAMBIO AQUÍ: Navegamos al directorio donde está el archivo Python clonado
+# Directorio donde está el archivo Python clonado
 WORKDIR /app/dockerizando
+
 
 CMD ["python", "aplicacion.py"]
 
